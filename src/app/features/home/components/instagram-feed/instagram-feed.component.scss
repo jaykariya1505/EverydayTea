@@ -1,0 +1,107 @@
+@use '../../../../../styles/variables' as *;
+@use '../../../../../styles/mixins' as *;
+
+.instagram-section {
+  background-color: $accent-beige-light;
+
+  .container {
+    @include container;
+  }
+
+  .insta-grid {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 1rem;
+    margin-bottom: 2.5rem;
+
+    @include desktop {
+      grid-template-columns: repeat(6, 1fr);
+    }
+
+    @include tablet {
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+    }
+
+    @include mobile {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 0.75rem;
+    }
+  }
+
+  .insta-tile {
+    position: relative;
+    width: 100%;
+    padding-top: 100%; // 1:1 Aspect Ratio
+    border-radius: $radius-md;
+    overflow: hidden;
+    cursor: pointer;
+    background: $neutral-border;
+
+    .tile-image {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform $transition-smooth;
+    }
+
+    .tile-overlay {
+      position: absolute;
+      inset: 0;
+      background: rgba(43, 38, 32, 0.75);
+      backdrop-filter: blur(2px);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 1rem;
+      color: $neutral-white;
+      opacity: 0;
+      transition: opacity $transition-fast;
+    }
+
+    .insta-icon {
+      width: 32px;
+      height: 32px;
+      margin-bottom: 0.5rem;
+
+      svg {
+        width: 100%;
+        height: 100%;
+      }
+    }
+
+    .tile-caption {
+      font-size: 0.75rem;
+      line-height: 1.4;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      margin-bottom: 0.35rem;
+    }
+
+    .tile-likes {
+      font-size: 0.75rem;
+      font-weight: 600;
+      color: $gold-light;
+    }
+
+    &:hover {
+      .tile-image {
+        transform: scale(1.1);
+      }
+
+      .tile-overlay {
+        opacity: 1;
+      }
+    }
+  }
+
+  .follow-cta-wrapper {
+    text-align: center;
+  }
+}

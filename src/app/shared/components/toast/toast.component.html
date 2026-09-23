@@ -1,0 +1,34 @@
+<div class="toast-container">
+  <div 
+    *ngFor="let toast of toastService.toasts()" 
+    class="toast-card" 
+    [ngClass]="'toast-' + (toast.type || 'success')"
+  >
+    <div class="toast-icon">
+      <!-- Checkmark SVG for success -->
+      <svg *ngIf="toast.type === 'success' || !toast.type" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M22 4L12 14.01l-3-3" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
+      <!-- Gold star SVG for EveryDay Gold -->
+      <svg *ngIf="toast.type === 'gold'" viewBox="0 0 24 24" fill="currentColor">
+        <path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/>
+      </svg>
+      <!-- Info SVG -->
+      <svg *ngIf="toast.type === 'info'" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+        <circle cx="12" cy="12" r="10"/>
+        <line x1="12" y1="16" x2="12" y2="12"/>
+        <line x1="12" y1="8" x2="12.01" y2="8"/>
+      </svg>
+    </div>
+
+    <div class="toast-content">
+      <div class="toast-title">{{ toast.title }}</div>
+      <div class="toast-body">{{ toast.message }}</div>
+    </div>
+
+    <button class="toast-close" (click)="toastService.remove(toast.id)" aria-label="Close message">
+      &times;
+    </button>
+  </div>
+</div>

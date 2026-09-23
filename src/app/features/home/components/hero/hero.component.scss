@@ -1,0 +1,175 @@
+@use '../../../../../styles/variables' as *;
+@use '../../../../../styles/mixins' as *;
+
+.hero-section {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  color: $neutral-white;
+  padding-top: 5rem;
+  padding-bottom: 3rem;
+
+  .hero-background {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: url('https://images.unsplash.com/photo-1576092768241-dec231879fc3?auto=format&fit=crop&w=2000&q=80') center/cover no-repeat;
+    animation: slowZoom 24s ease-in-out infinite alternate;
+  }
+
+  .hero-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    background: linear-gradient(
+      180deg,
+      rgba(35, 30, 25, 0.75) 0%,
+      rgba(43, 38, 32, 0.65) 50%,
+      rgba(25, 22, 18, 0.92) 100%
+    );
+  }
+
+  .hero-container {
+    position: relative;
+    z-index: 3;
+    text-align: center;
+    max-width: 860px;
+    @include container;
+  }
+
+  .hero-content {
+    animation: fadeUp 1s ease forwards;
+  }
+
+  .eyebrow-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.45rem 1.1rem;
+    border-radius: $radius-full;
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    font-size: 0.85rem;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: $accent-beige;
+    margin-bottom: 1.5rem;
+
+    .leaf-dot {
+      font-size: 0.9rem;
+    }
+  }
+
+  .hero-title {
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+    margin-bottom: 1.25rem;
+
+    .hinglish-text {
+      font-family: $font-heading;
+      font-size: 3.75rem;
+      font-weight: 700;
+      color: $neutral-white;
+      letter-spacing: -0.02em;
+      text-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+
+      @include mobile {
+        font-size: 2.35rem;
+      }
+    }
+
+    .title-sub {
+      font-family: $font-heading;
+      font-size: 2.1rem;
+      font-style: italic;
+      color: $accent-beige;
+      font-weight: 400;
+
+      @include mobile {
+        font-size: 1.4rem;
+      }
+    }
+  }
+
+  .hero-description {
+    font-size: 1.15rem;
+    line-height: 1.65;
+    color: rgba(255, 255, 255, 0.88);
+    max-width: 660px;
+    margin: 0 auto 2.25rem;
+    font-weight: 300;
+
+    @include mobile {
+      font-size: 0.98rem;
+    }
+  }
+
+  .hero-ctas {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.25rem;
+
+    @include mobile {
+      flex-direction: column;
+      width: 100%;
+
+      .btn {
+        width: 100%;
+      }
+    }
+  }
+
+  // Scroll Down Mouse Indicator
+  .scroll-indicator {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    cursor: pointer;
+    opacity: 0.8;
+    transition: opacity $transition-fast;
+
+    &:hover {
+      opacity: 1;
+    }
+
+    .scroll-text {
+      font-size: 0.75rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: rgba(255, 255, 255, 0.7);
+    }
+
+    .mouse-icon {
+      width: 24px;
+      height: 38px;
+      border: 2px solid rgba(255, 255, 255, 0.6);
+      border-radius: 12px;
+      position: relative;
+
+      .wheel {
+        width: 4px;
+        height: 8px;
+        background: $accent-beige;
+        border-radius: 2px;
+        position: absolute;
+        top: 6px;
+        left: 50%;
+        transform: translateX(-50%);
+        animation: bounceSlow 1.8s ease-in-out infinite;
+      }
+    }
+  }
+}

@@ -1,0 +1,136 @@
+@use '../../../../../styles/variables' as *;
+@use '../../../../../styles/mixins' as *;
+
+.farm-to-cup-section {
+  background-color: $neutral-light;
+
+  .container {
+    @include container;
+  }
+
+  .timeline-container {
+    position: relative;
+    padding-top: 1rem;
+  }
+
+  .connecting-line {
+    position: absolute;
+    top: 52px;
+    left: 8%;
+    right: 8%;
+    height: 3px;
+    background: linear-gradient(90deg, $primary-green-light 0%, $gold-primary 50%, $primary-green 100%);
+    z-index: 1;
+    border-radius: 3px;
+
+    @include mobile {
+      top: 0;
+      bottom: 0;
+      left: 36px;
+      right: auto;
+      width: 3px;
+      height: 100%;
+    }
+  }
+
+  .steps-grid {
+    position: relative;
+    z-index: 2;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1.5rem;
+
+    @include desktop {
+      grid-template-columns: repeat(5, 1fr);
+    }
+
+    @include tablet {
+      grid-template-columns: repeat(3, 1fr);
+      row-gap: 2.5rem;
+    }
+
+    @include mobile {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      padding-left: 1rem;
+    }
+  }
+
+  .step-card {
+    background: $neutral-white;
+    border-radius: $radius-lg;
+    padding: 1.5rem 1.15rem;
+    border: 1px solid $neutral-border;
+    box-shadow: $shadow-sm;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    @include hover-lift;
+
+    @include mobile {
+      flex-direction: row;
+      align-items: flex-start;
+      text-align: left;
+      gap: 1.25rem;
+      padding-left: 1.25rem;
+    }
+
+    .step-header {
+      position: relative;
+      margin-bottom: 1.25rem;
+
+      @include mobile {
+        margin-bottom: 0;
+        flex-shrink: 0;
+      }
+    }
+
+    .step-number {
+      width: 64px;
+      height: 64px;
+      border-radius: $radius-full;
+      background: $primary-green;
+      color: $neutral-white;
+      font-family: $font-heading;
+      font-size: 1.5rem;
+      font-weight: 700;
+      @include flex-center;
+      box-shadow: 0 4px 14px rgba(74, 107, 77, 0.3);
+      border: 4px solid $neutral-white;
+    }
+
+    .step-icon {
+      position: absolute;
+      bottom: -6px;
+      right: -6px;
+      width: 28px;
+      height: 28px;
+      border-radius: $radius-full;
+      background: $gold-primary;
+      color: $neutral-dark;
+      @include flex-center;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+
+      svg {
+        width: 14px;
+        height: 14px;
+      }
+    }
+
+    .step-body {
+      .step-title {
+        font-family: $font-heading;
+        font-size: 1.1rem;
+        margin-bottom: 0.5rem;
+        color: $neutral-dark;
+      }
+
+      .step-desc {
+        font-size: 0.84rem;
+        line-height: 1.55;
+        color: $neutral-muted;
+      }
+    }
+  }
+}

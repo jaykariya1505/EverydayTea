@@ -1,0 +1,64 @@
+<header class="header" [class.scrolled]="isScrolled()">
+  <div class="header-container">
+    <!-- Brand Logo -->
+    <a routerLink="/" class="brand-link" (click)="closeMobileMenu()">
+      <app-wordmark-logo [variant]="isScrolled() ? 'default' : 'light'" size="medium"></app-wordmark-logo>
+    </a>
+
+    <!-- Desktop Nav Links -->
+    <nav class="desktop-nav" aria-label="Main Navigation">
+      <ul class="nav-list">
+        <li *ngFor="let item of navItems" class="nav-item">
+          <a [routerLink]="item.path" routerLinkActive="active" [routerLinkActiveOptions]="{exact: item.path === '/'}" class="nav-link">
+            {{ item.label }}
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- Header Actions -->
+    <div class="header-actions">
+      <button class="btn btn-primary shop-cta" (click)="onShopClick()">
+        <span>Shop Now</span>
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M5 12h14M12 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+      </button>
+
+      <!-- Hamburger Toggle for Mobile -->
+      <button class="hamburger-btn" (click)="toggleMobileMenu()" [attr.aria-expanded]="isMobileMenuOpen()" aria-label="Toggle Navigation Menu">
+        <span class="hamburger-box">
+          <span class="hamburger-inner" [class.is-active]="isMobileMenuOpen()"></span>
+        </span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Drawer Backdrop & Menu -->
+  <div class="mobile-drawer" [class.open]="isMobileMenuOpen()">
+    <div class="drawer-overlay" (click)="closeMobileMenu()"></div>
+    <div class="drawer-content">
+      <div class="drawer-header">
+        <app-wordmark-logo variant="default" size="medium"></app-wordmark-logo>
+        <button class="close-btn" (click)="closeMobileMenu()" aria-label="Close menu">&times;</button>
+      </div>
+
+      <nav class="mobile-nav">
+        <ul class="mobile-nav-list">
+          <li *ngFor="let item of navItems">
+            <a [routerLink]="item.path" routerLinkActive="active" (click)="closeMobileMenu()" class="mobile-nav-link">
+              {{ item.label }}
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="drawer-footer">
+        <p class="drawer-tagline">Har Subah, Har Chai — Organic Assam Tea</p>
+        <button class="btn btn-primary btn-block" (click)="onShopClick()">
+          Shop EveryDay Tea
+        </button>
+      </div>
+    </div>
+  </div>
+</header>

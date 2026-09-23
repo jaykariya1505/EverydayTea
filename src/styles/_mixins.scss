@@ -1,0 +1,79 @@
+@use './variables' as *;
+
+// Responsive Breakpoints
+@mixin mobile {
+  @media (max-width: #{$breakpoint-tablet - 1px}) {
+    @content;
+  }
+}
+
+@mixin tablet {
+  @media (min-width: #{$breakpoint-tablet}) and (max-width: #{$breakpoint-desktop - 1px}) {
+    @content;
+  }
+}
+
+@mixin tablet-up {
+  @media (min-width: #{$breakpoint-tablet}) {
+    @content;
+  }
+}
+
+@mixin desktop {
+  @media (min-width: #{$breakpoint-desktop}) {
+    @content;
+  }
+}
+
+@mixin wide {
+  @media (min-width: #{$breakpoint-wide}) {
+    @content;
+  }
+}
+
+// Container & Flexbox Utilities
+@mixin container {
+  width: 100%;
+  max-width: 1240px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+@mixin flex-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@mixin flex-between {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+// Glassmorphism effect
+@mixin glass-panel($bg-opacity: 0.85, $blur: 12px) {
+  background: rgba(255, 253, 249, $bg-opacity);
+  backdrop-filter: blur($blur);
+  -webkit-backdrop-filter: blur($blur);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+}
+
+@mixin glass-dark($bg-opacity: 0.7, $blur: 16px) {
+  background: rgba(43, 38, 32, $bg-opacity);
+  backdrop-filter: blur($blur);
+  -webkit-backdrop-filter: blur($blur);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+// Card Hover Animation
+@mixin hover-lift {
+  transition: transform $transition-smooth, box-shadow $transition-smooth;
+  
+  &:hover {
+    transform: translateY(-6px);
+    box-shadow: $shadow-md;
+  }
+}

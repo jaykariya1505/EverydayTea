@@ -1,0 +1,109 @@
+<section class="section featured-products-section" id="featured-products">
+  <div class="container">
+    <!-- Section Header -->
+    <div class="section-header">
+      <span class="eyebrow">Our Bestsellers</span>
+      <h2 class="section-title">Crafted For Every Indian Household</h2>
+      <p class="section-subtitle">
+        From our flagship everyday morning CTC to our premium EveryDay Gold reserve, find your perfect daily cup of chai.
+      </p>
+    </div>
+
+    <!-- Category Filter Tabs -->
+    <div class="filter-tabs">
+      <button 
+        class="tab-btn" 
+        [class.active]="activeCategory() === 'all'" 
+        (click)="setCategory('all')"
+      >
+        All Teas
+      </button>
+      <button 
+        class="tab-btn gold-tab" 
+        [class.active]="activeCategory() === 'gold'" 
+        (click)="setCategory('gold')"
+      >
+        EveryDay Gold Line ✨
+      </button>
+      <button 
+        class="tab-btn" 
+        [class.active]="activeCategory() === 'original'" 
+        (click)="setCategory('original')"
+      >
+        Original Assam
+      </button>
+      <button 
+        class="tab-btn" 
+        [class.active]="activeCategory() === 'masala'" 
+        (click)="setCategory('masala')"
+      >
+        Masala Chai
+      </button>
+      <button 
+        class="tab-btn" 
+        [class.active]="activeCategory() === 'green'" 
+        (click)="setCategory('green')"
+      >
+        Organic Green
+      </button>
+    </div>
+
+    <!-- Products Responsive Grid -->
+    <div class="products-grid">
+      <div 
+        *ngFor="let product of filteredProducts" 
+        class="product-card" 
+        [class.gold-card]="product.isGold"
+      >
+        <!-- Card Badge -->
+        <div *ngIf="product.badge" class="product-badge" [class.gold-badge]="product.isGold">
+          {{ product.badge }}
+        </div>
+
+        <!-- Product Image Container -->
+        <div class="image-wrapper">
+          <img [src]="product.image" [alt]="product.name" loading="lazy" class="product-image" />
+          <div class="image-overlay">
+            <button class="btn quick-view-btn" (click)="addToCart(product)">
+              Quick Add +
+            </button>
+          </div>
+        </div>
+
+        <!-- Product Details -->
+        <div class="product-info">
+          <div class="rating-bar">
+            <span class="stars">★★★★★</span>
+            <span class="rating-num">{{ product.rating }}</span>
+            <span class="reviews-count">({{ product.reviewsCount }})</span>
+          </div>
+
+          <h3 class="product-name">{{ product.name }}</h3>
+          <p class="product-tagline">{{ product.tagline }}</p>
+          <p class="product-desc">{{ product.description }}</p>
+
+          <div class="product-footer">
+            <div class="price-box">
+              <span class="currency">₹</span>
+              <span class="price-amount">{{ product.price }}</span>
+              <span class="weight-tag">/ {{ product.weight }}</span>
+            </div>
+
+            <button 
+              class="btn" 
+              [class.btn-gold]="product.isGold" 
+              [class.btn-primary]="!product.isGold" 
+              (click)="addToCart(product)"
+            >
+              <span>Add to Cart</span>
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
+                <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/>
+                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

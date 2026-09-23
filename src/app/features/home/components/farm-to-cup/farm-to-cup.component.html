@@ -1,0 +1,33 @@
+<section class="section farm-to-cup-section">
+  <div class="container">
+    <div class="section-header">
+      <span class="eyebrow">Honest Sourcing</span>
+      <h2 class="section-title">From Our Assam Gardens To Your Cup</h2>
+      <p class="section-subtitle">
+        Trace the 5-step journey of EveryDay Tea from fresh leaves in Assam to the piping hot cup in your hands.
+      </p>
+    </div>
+
+    <!-- Timeline Wrapper -->
+    <div class="timeline-container">
+      <!-- Connecting Line Visual -->
+      <div class="connecting-line"></div>
+
+      <div class="steps-grid">
+        <div *ngFor="let step of steps" class="step-card">
+          <div class="step-header">
+            <div class="step-number">{{ step.stepNumber }}</div>
+            <div class="step-icon">
+              <svg viewBox="0 0 24 24" fill="none" [innerHTML]="step.iconSvg"></svg>
+            </div>
+          </div>
+
+          <div class="step-body">
+            <h3 class="step-title">{{ step.title }}</h3>
+            <p class="step-desc">{{ step.description }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,26 @@
+<section class="section why-choose-us-section">
+  <div class="container">
+    <div class="section-header">
+      <span class="eyebrow">The EveryDay Difference</span>
+      <h2 class="section-title">Why Indian Homes Choose EveryDay Tea</h2>
+      <p class="section-subtitle">
+        We believe everyday tea should never compromise on purity, flavor, or honest value. Here is our pledge to your morning cup.
+      </p>
+    </div>
+
+    <div class="benefits-grid">
+      <div *ngFor="let item of benefits" class="benefit-card">
+        <div class="icon-box">
+          <svg viewBox="0 0 24 24" fill="none" class="benefit-svg" [innerHTML]="item.iconSvg">
+          </svg>
+        </div>
+
+        <div class="card-content">
+          <span class="highlight-badge">{{ item.highlightText }}</span>
+          <h3 class="card-title">{{ item.title }}</h3>
+          <p class="card-desc">{{ item.description }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
