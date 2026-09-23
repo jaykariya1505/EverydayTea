@@ -1,0 +1,219 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.contact-page {
+  .contact-banner {
+    padding: 8.5rem 0 3.5rem;
+    background: linear-gradient(180deg, $neutral-dark 0%, #3D352E 100%);
+    color: $neutral-white;
+    text-align: center;
+
+    .container {
+      @include container;
+      max-width: 760px;
+    }
+
+    .eyebrow-tag {
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: $accent-beige;
+      margin-bottom: 0.75rem;
+      display: block;
+    }
+
+    .page-title {
+      font-family: $font-heading;
+      font-size: 2.75rem;
+      margin-bottom: 1rem;
+
+      @include mobile {
+        font-size: 1.85rem;
+      }
+    }
+
+    .banner-desc {
+      font-size: 1.05rem;
+      color: rgba(255, 255, 255, 0.82);
+      line-height: 1.6;
+    }
+  }
+
+  .contact-main-section {
+    background: $neutral-light;
+
+    .container {
+      @include container;
+    }
+  }
+
+  .contact-grid {
+    display: grid;
+    grid-template-columns: 1.6fr 1fr;
+    gap: 3rem;
+
+    @include tablet {
+      grid-template-columns: 1fr;
+    }
+
+    @include mobile {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+  }
+
+  .form-card {
+    background: $neutral-white;
+    padding: 2.5rem;
+    border-radius: $radius-lg;
+    border: 1px solid $neutral-border;
+    box-shadow: $shadow-sm;
+
+    @include mobile {
+      padding: 1.5rem;
+    }
+
+    .form-title {
+      font-family: $font-heading;
+      font-size: 1.85rem;
+      margin-bottom: 0.35rem;
+    }
+
+    .form-sub {
+      font-size: 0.9rem;
+      color: $neutral-muted;
+      margin-bottom: 2rem;
+    }
+
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1.25rem;
+    }
+
+    .form-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.25rem;
+
+      @include mobile {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 0.4rem;
+
+      label {
+        font-size: 0.88rem;
+        font-weight: 600;
+        color: $neutral-dark;
+      }
+
+      .form-input, .form-select, .form-textarea {
+        padding: 0.8rem 1rem;
+        border-radius: $radius-md;
+        border: 1px solid $neutral-border;
+        font-family: $font-body;
+        font-size: 0.9rem;
+        color: $neutral-dark;
+        background: $neutral-light;
+
+        &:focus {
+          outline: none;
+          border-color: $primary-green;
+          background: $neutral-white;
+        }
+      }
+    }
+
+    .submit-btn {
+      margin-top: 0.5rem;
+      padding: 0.9rem;
+      font-size: 1rem;
+    }
+  }
+
+  .info-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+
+    .info-card {
+      background: $neutral-white;
+      padding: 1.75rem;
+      border-radius: $radius-lg;
+      border: 1px solid $neutral-border;
+
+      .info-card-title {
+        font-family: $font-heading;
+        font-size: 1.35rem;
+        margin-bottom: 0.25rem;
+      }
+
+      .info-text {
+        font-size: 0.82rem;
+        color: $neutral-muted;
+        margin-bottom: 1.25rem;
+      }
+
+      .info-item {
+        display: flex;
+        gap: 1rem;
+        margin-bottom: 1rem;
+
+        &:last-child { margin-bottom: 0; }
+
+        .info-icon {
+          font-size: 1.4rem;
+        }
+
+        .info-details {
+          display: flex;
+          flex-direction: column;
+
+          .label {
+            font-size: 0.78rem;
+            color: $neutral-muted;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+          }
+
+          .val {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: $neutral-dark;
+
+            &.text-val {
+              font-weight: 400;
+              font-size: 0.88rem;
+              line-height: 1.5;
+            }
+          }
+        }
+      }
+    }
+
+    .quick-faq-box {
+      background: $accent-beige-light;
+      border: 1px solid rgba(74, 107, 77, 0.2);
+      padding: 1.5rem;
+      border-radius: $radius-lg;
+
+      h4 {
+        font-family: $font-heading;
+        font-size: 1.1rem;
+        margin-bottom: 0.5rem;
+      }
+
+      p {
+        font-size: 0.85rem;
+        color: $neutral-muted;
+        margin-bottom: 1rem;
+      }
+    }
+  }
+}

@@ -18,11 +18,19 @@
 
     <!-- Header Actions -->
     <div class="header-actions">
-      <button class="btn btn-primary shop-cta" (click)="onShopClick()">
-        <span>Shop Now</span>
-        <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2">
-          <path d="M5 12h14M12 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/>
+      <!-- Cart Icon Button with Live Count Badge -->
+      <button class="cart-btn-icon" (click)="openCart()" aria-label="View Shopping Cart">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/>
+          <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
         </svg>
+        <span *ngIf="cartService.totalItems() > 0" class="cart-badge-count">
+          {{ cartService.totalItems() }}
+        </span>
+      </button>
+
+      <button class="btn btn-primary shop-cta" (click)="openCart()">
+        <span>Cart (₹{{ cartService.subtotal() }})</span>
       </button>
 
       <!-- Hamburger Toggle for Mobile -->
@@ -55,8 +63,8 @@
 
       <div class="drawer-footer">
         <p class="drawer-tagline">Har Subah, Har Chai — Organic Assam Tea</p>
-        <button class="btn btn-primary btn-block" (click)="onShopClick()">
-          Shop EveryDay Tea
+        <button class="btn btn-primary btn-block" (click)="openCart()">
+          View Cart ({{ cartService.totalItems() }})
         </button>
       </div>
     </div>

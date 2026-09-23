@@ -4,6 +4,7 @@ export interface Product {
   subTitle?: string;
   tagline: string;
   price: number;
+  originalPrice?: number;
   weight: string;
   rating: number;
   reviewsCount: number;
@@ -11,7 +12,16 @@ export interface Product {
   isGold?: boolean;
   image: string;
   description: string;
-  category: 'original' | 'gold' | 'masala' | 'green';
+  category: 'original' | 'gold' | 'masala' | 'green' | 'herbal';
+  origin?: string;
+  brewingTime?: string;
+  ingredients?: string;
+  inStock?: boolean;
+}
+
+export interface CartItem {
+  product: Product;
+  quantity: number;
 }
 
 export interface ProcessStep {
@@ -32,4 +42,11 @@ export interface ToastMessage {
   title: string;
   message: string;
   type?: 'success' | 'info' | 'gold';
+}
+
+export interface FaqItem {
+  id: string;
+  question: string;
+  answer: string;
+  category: 'general' | 'quality' | 'gold' | 'orders' | 'wholesale';
 }

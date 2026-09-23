@@ -2,7 +2,7 @@ import { Component, HostListener, signal, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { WordmarkLogoComponent } from '../../shared/components/wordmark-logo/wordmark-logo.component';
-import { ToastService } from '../../core/services/toast.service';
+import { CartService } from '../../core/services/cart.service';
 import { NavItem } from '../../core/models/tea.models';
 
 @Component({
@@ -13,7 +13,7 @@ import { NavItem } from '../../core/models/tea.models';
   styleUrl: './header.component.scss'
 })
 export class HeaderComponent {
-  private toastService = inject(ToastService);
+  cartService = inject(CartService);
 
   readonly isScrolled = signal(false);
   readonly isMobileMenuOpen = signal(false);
@@ -21,10 +21,11 @@ export class HeaderComponent {
   readonly navItems: NavItem[] = [
     { label: 'Home', path: '/' },
     { label: 'About Us', path: '/about' },
-    { label: 'Our Products', path: '/products' },
-    { label: 'Sourcing & Gardens', path: '/sourcing' },
-    { label: 'Tea Journal', path: '/blog' },
-    { label: 'Contact', path: '/contact' }
+    { label: 'Products', path: '/products' },
+    { label: 'Wholesale (B2B)', path: '/wholesale' },
+    { label: 'Franchise', path: '/franchise' },
+    { label: 'Contact', path: '/contact' },
+    { label: 'FAQ', path: '/faq' }
   ];
 
   @HostListener('window:scroll', [])
@@ -41,12 +42,8 @@ export class HeaderComponent {
     this.isMobileMenuOpen.set(false);
   }
 
-  onShopClick(): void {
+  openCart(): void {
     this.closeMobileMenu();
-    this.toastService.show(
-      '☕ Shop EveryDay Tea',
-      'Redirecting to our organic Assam tea collection...',
-      'success'
-    );
+    this.cartService.openCart();
   }
 }

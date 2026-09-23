@@ -1,0 +1,62 @@
+<div class="faq-page">
+  <!-- Page Banner -->
+  <section class="faq-banner">
+    <div class="container">
+      <span class="eyebrow-tag">Help & Knowledge Center</span>
+      <h1 class="page-title">Frequently Asked Questions</h1>
+      <p class="banner-desc">
+        Everything you need to know about EveryDay Tea, Assam garden sourcing, EveryDay Gold reserve, shipping, and bulk ordering.
+      </p>
+    </div>
+  </section>
+
+  <!-- FAQ Main Accordion Section -->
+  <section class="section faq-main-section">
+    <div class="container">
+      <!-- Category Filter Pills -->
+      <div class="faq-categories">
+        <button class="pill-btn" [class.active]="activeCategory() === 'all'" (click)="setCategory('all')">
+          All Questions
+        </button>
+        <button class="pill-btn" [class.active]="activeCategory() === 'quality'" (click)="setCategory('quality')">
+          Organic Quality & Sourcing
+        </button>
+        <button class="pill-btn gold-pill" [class.active]="activeCategory() === 'gold'" (click)="setCategory('gold')">
+          EveryDay Gold Line ✨
+        </button>
+        <button class="pill-btn" [class.active]="activeCategory() === 'orders'" (click)="setCategory('orders')">
+          Shipping & Delivery
+        </button>
+        <button class="pill-btn" [class.active]="activeCategory() === 'wholesale'" (click)="setCategory('wholesale')">
+          Wholesale & B2B
+        </button>
+      </div>
+
+      <!-- Accordion List -->
+      <div class="faq-accordion-list">
+        <div 
+          *ngFor="let item of filteredFaqs()" 
+          class="accordion-card" 
+          [class.expanded]="isExpanded(item.id)"
+          [class.gold-faq]="item.category === 'gold'"
+        >
+          <button class="accordion-header" (click)="toggleFaq(item.id)">
+            <h3 class="question-text">{{ item.question }}</h3>
+            <span class="accordion-icon">{{ isExpanded(item.id) ? '−' : '+' }}</span>
+          </button>
+
+          <div *ngIf="isExpanded(item.id)" class="accordion-body">
+            <p class="answer-text">{{ item.answer }}</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom Contact CTA -->
+      <div class="faq-cta-card">
+        <h3>Still have questions?</h3>
+        <p>Our tea experts are happy to guide you on finding your perfect daily brew.</p>
+        <a routerLink="/contact" class="btn btn-primary">Contact Customer Care</a>
+      </div>
+    </div>
+  </section>
+</div>

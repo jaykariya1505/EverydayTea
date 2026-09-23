@@ -1,0 +1,497 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.products-page {
+  .products-header {
+    padding: 8.5rem 0 3.5rem;
+    background: linear-gradient(180deg, $neutral-dark 0%, #3D352E 100%);
+    color: $neutral-white;
+    text-align: center;
+
+    .container {
+      @include container;
+      max-width: 760px;
+    }
+
+    .eyebrow-tag {
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: $accent-beige;
+      margin-bottom: 0.75rem;
+      display: block;
+    }
+
+    .page-title {
+      font-family: $font-heading;
+      font-size: 2.75rem;
+      margin-bottom: 1rem;
+
+      @include mobile {
+        font-size: 1.85rem;
+      }
+    }
+
+    .header-desc {
+      font-size: 1.05rem;
+      color: rgba(255, 255, 255, 0.82);
+      line-height: 1.6;
+      margin-bottom: 2rem;
+    }
+
+    .search-box-wrapper {
+      position: relative;
+      max-width: 580px;
+      margin: 0 auto;
+
+      .search-icon {
+        position: absolute;
+        left: 1.25rem;
+        top: 50%;
+        transform: translateY(-50%);
+        color: $neutral-muted;
+      }
+
+      .search-input {
+        width: 100%;
+        padding: 0.95rem 3rem 0.95rem 3.25rem;
+        border-radius: $radius-full;
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        background: rgba(255, 255, 255, 0.95);
+        color: $neutral-dark;
+        font-family: $font-body;
+        font-size: 0.95rem;
+        box-shadow: $shadow-md;
+
+        &:focus {
+          outline: none;
+          border-color: $gold-primary;
+          background: $neutral-white;
+        }
+      }
+
+      .clear-search-btn {
+        position: absolute;
+        right: 1.25rem;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 1.25rem;
+        color: $neutral-muted;
+
+        &:hover {
+          color: $neutral-dark;
+        }
+      }
+    }
+  }
+
+  .catalog-section {
+    background: $neutral-light;
+
+    .container {
+      @include container;
+    }
+  }
+
+  .catalog-toolbar {
+    @include flex-between;
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+    flex-wrap: wrap;
+
+    .category-pills {
+      display: flex;
+      gap: 0.65rem;
+      flex-wrap: wrap;
+
+      .pill-btn {
+        padding: 0.55rem 1.2rem;
+        border-radius: $radius-full;
+        font-size: 0.88rem;
+        font-weight: 500;
+        color: $neutral-muted;
+        background: $neutral-white;
+        border: 1px solid $neutral-border;
+        transition: all $transition-smooth;
+
+        &:hover {
+          color: $neutral-dark;
+          border-color: $primary-green;
+        }
+
+        &.active {
+          background: $primary-green;
+          color: $neutral-white;
+          border-color: $primary-green;
+        }
+
+        &.gold-pill.active {
+          background: linear-gradient(135deg, $gold-primary, $gold-light);
+          color: $neutral-dark;
+          border-color: $gold-primary;
+          box-shadow: $shadow-gold;
+        }
+      }
+    }
+
+    .sort-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.88rem;
+      color: $neutral-muted;
+
+      .sort-select {
+        padding: 0.5rem 1rem;
+        border-radius: $radius-md;
+        border: 1px solid $neutral-border;
+        background: $neutral-white;
+        font-family: $font-body;
+        font-size: 0.88rem;
+        color: $neutral-dark;
+        cursor: pointer;
+
+        &:focus {
+          outline: none;
+          border-color: $primary-green;
+        }
+      }
+    }
+  }
+
+  .products-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+
+    @include desktop {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    @include tablet {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include mobile {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+  }
+
+  .product-card {
+    position: relative;
+    background: $neutral-white;
+    border-radius: $radius-lg;
+    overflow: hidden;
+    border: 1px solid $neutral-border;
+    display: flex;
+    flex-direction: column;
+    cursor: pointer;
+    @include hover-lift;
+
+    &.gold-card {
+      border: 1.5px solid $gold-primary;
+      background: linear-gradient(180deg, #FFFFFF, $gold-subtle);
+    }
+
+    .product-badge {
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+      z-index: 5;
+      padding: 0.3rem 0.75rem;
+      border-radius: $radius-full;
+      font-size: 0.75rem;
+      font-weight: 600;
+      background: $primary-green;
+      color: $neutral-white;
+
+      &.gold-badge {
+        background: linear-gradient(135deg, $gold-primary, $gold-light);
+        color: $neutral-dark;
+      }
+    }
+
+    .image-box {
+      position: relative;
+      height: 230px;
+      overflow: hidden;
+
+      .product-img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform $transition-smooth;
+      }
+
+      .card-overlay {
+        position: absolute;
+        inset: 0;
+        background: rgba(43, 38, 32, 0.4);
+        @include flex-center;
+        opacity: 0;
+        transition: opacity $transition-fast;
+
+        .quick-view-label {
+          background: $neutral-white;
+          color: $neutral-dark;
+          padding: 0.45rem 1rem;
+          border-radius: $radius-full;
+          font-size: 0.8rem;
+          font-weight: 600;
+        }
+      }
+    }
+
+    &:hover {
+      .product-img { transform: scale(1.08); }
+      .card-overlay { opacity: 1; }
+    }
+
+    .card-details {
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
+
+      .rating-row {
+        display: flex;
+        align-items: center;
+        gap: 0.35rem;
+        margin-bottom: 0.4rem;
+        font-size: 0.8rem;
+
+        .stars { color: $gold-primary; }
+        .rating-val { font-weight: 600; }
+        .count { color: $neutral-muted; }
+      }
+
+      .product-title {
+        font-family: $font-heading;
+        font-size: 1.25rem;
+        margin-bottom: 0.25rem;
+        color: $neutral-dark;
+      }
+
+      .product-tagline {
+        font-size: 0.82rem;
+        font-weight: 600;
+        color: $primary-green;
+        margin-bottom: 1.25rem;
+      }
+
+      .card-footer {
+        margin-top: auto;
+        padding-top: 0.85rem;
+        border-top: 1px solid rgba(0,0,0,0.06);
+        @include flex-between;
+
+        .current-price {
+          font-family: $font-heading;
+          font-size: 1.4rem;
+          font-weight: 700;
+          color: $neutral-dark;
+        }
+
+        .original-price {
+          font-size: 0.85rem;
+          text-decoration: line-through;
+          color: $neutral-muted;
+          margin-left: 0.35rem;
+        }
+
+        .weight-label {
+          font-size: 0.75rem;
+          color: $neutral-muted;
+        }
+
+        .btn-sm {
+          padding: 0.5rem 1.1rem;
+          font-size: 0.82rem;
+        }
+      }
+    }
+  }
+
+  .no-products-box {
+    text-align: center;
+    padding: 4rem 1rem;
+
+    .no-icon { font-size: 3.5rem; margin-bottom: 1rem; }
+    h3 { font-family: $font-heading; font-size: 1.5rem; margin-bottom: 0.5rem; }
+    p { font-size: 0.95rem; color: $neutral-muted; margin-bottom: 1.5rem; }
+  }
+
+  // Detail Modal
+  .modal-wrapper {
+    position: fixed;
+    inset: 0;
+    z-index: 10050;
+    @include flex-center;
+    padding: 1.5rem;
+
+    .modal-backdrop {
+      position: absolute;
+      inset: 0;
+      background: rgba(43, 38, 32, 0.7);
+      backdrop-filter: blur(4px);
+    }
+
+    .modal-card {
+      position: relative;
+      z-index: 2;
+      background: $neutral-white;
+      width: 840px;
+      max-width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      border-radius: $radius-lg;
+      box-shadow: $shadow-lg;
+      padding: 2rem;
+      animation: fadeUp 0.3s ease forwards;
+
+      &.gold-modal {
+        border: 2px solid $gold-primary;
+      }
+
+      .modal-close {
+        position: absolute;
+        top: 1rem;
+        right: 1.25rem;
+        font-size: 2rem;
+        line-height: 1;
+        color: $neutral-muted;
+
+        &:hover { color: $neutral-dark; }
+      }
+    }
+
+    .modal-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 2rem;
+
+      @include mobile {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .modal-image-col {
+      position: relative;
+
+      .modal-img {
+        width: 100%;
+        height: 320px;
+        object-fit: cover;
+        border-radius: $radius-md;
+      }
+
+      .modal-badge {
+        position: absolute;
+        top: 1rem;
+        left: 1rem;
+        padding: 0.35rem 0.85rem;
+        border-radius: $radius-full;
+        background: $primary-green;
+        color: $neutral-white;
+        font-size: 0.8rem;
+        font-weight: 600;
+
+        &.gold-badge {
+          background: linear-gradient(135deg, $gold-primary, $gold-light);
+          color: $neutral-dark;
+        }
+      }
+    }
+
+    .modal-info-col {
+      display: flex;
+      flex-direction: column;
+
+      .modal-rating {
+        font-size: 0.82rem;
+        color: $gold-primary;
+        font-weight: 600;
+        margin-bottom: 0.5rem;
+      }
+
+      .modal-title {
+        font-family: $font-heading;
+        font-size: 1.85rem;
+        margin-bottom: 0.25rem;
+      }
+
+      .modal-tagline {
+        font-size: 0.88rem;
+        font-weight: 600;
+        color: $primary-green;
+        margin-bottom: 1rem;
+      }
+
+      .modal-price-row {
+        display: flex;
+        align-items: baseline;
+        gap: 0.5rem;
+        margin-bottom: 1rem;
+
+        .modal-price {
+          font-family: $font-heading;
+          font-size: 1.75rem;
+          font-weight: 700;
+          color: $neutral-dark;
+        }
+
+        .modal-orig-price {
+          text-decoration: line-through;
+          color: $neutral-muted;
+        }
+
+        .modal-weight {
+          font-size: 0.85rem;
+          color: $neutral-muted;
+        }
+      }
+
+      .modal-desc {
+        font-size: 0.92rem;
+        color: $neutral-muted;
+        line-height: 1.6;
+        margin-bottom: 1.25rem;
+      }
+
+      .modal-spec-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0.85rem;
+        padding: 1rem;
+        background: $neutral-light;
+        border-radius: $radius-md;
+        margin-bottom: 1.5rem;
+        font-size: 0.82rem;
+
+        .spec-item {
+          display: flex;
+          flex-direction: column;
+
+          &.full-spec {
+            grid-column: span 2;
+          }
+
+          .spec-label {
+            font-weight: 600;
+            color: $neutral-dark;
+          }
+
+          .spec-val {
+            color: $neutral-muted;
+          }
+        }
+      }
+
+      .modal-actions {
+        margin-top: auto;
+      }
+    }
+  }
+}

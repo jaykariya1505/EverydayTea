@@ -6,15 +6,36 @@ export const routes: Routes = [
     loadComponent: () => import('./features/home/home.component').then(m => m.HomeComponent),
     title: 'EveryDay Tea | Organic Assam Tea — Har Subah, Har Chai'
   },
-  // TODO: Future route implementations for remaining pages
-  // { path: 'about', loadComponent: () => import('./features/about/about.component').then(m => m.AboutComponent) },
-  // { path: 'products', loadComponent: () => import('./features/products/products.component').then(m => m.ProductsComponent) },
-  // { path: 'sourcing', loadComponent: () => import('./features/sourcing/sourcing.component').then(m => m.SourcingComponent) },
-  // { path: 'blog', loadComponent: () => import('./features/blog/blog.component').then(m => m.BlogComponent) },
-  // { path: 'contact', loadComponent: () => import('./features/contact/contact.component').then(m => m.ContactComponent) },
-  // { path: 'faq', loadComponent: () => import('./features/faq/faq.component').then(m => m.FaqComponent) },
-  // { path: 'wholesale', loadComponent: () => import('./features/wholesale/wholesale.component').then(m => m.WholesaleComponent) },
-  // { path: 'franchise', loadComponent: () => import('./features/franchise/franchise.component').then(m => m.FranchiseComponent) },
+  {
+    path: 'about',
+    loadComponent: () => import('./features/about/about.component').then(m => m.AboutComponent),
+    title: 'About Us | EveryDay Tea — Our Assam Heritage & Vision'
+  },
+  {
+    path: 'products',
+    loadComponent: () => import('./features/products/products.component').then(m => m.ProductsComponent),
+    title: 'Shop Organic Assam Tea | EveryDay Tea & EveryDay Gold'
+  },
+  {
+    path: 'contact',
+    loadComponent: () => import('./features/contact/contact.component').then(m => m.ContactComponent),
+    title: 'Contact Us | EveryDay Tea Customer Care'
+  },
+  {
+    path: 'faq',
+    loadComponent: () => import('./features/faq/faq.component').then(m => m.FaqComponent),
+    title: 'Help & FAQ | EveryDay Tea'
+  },
+  {
+    path: 'wholesale',
+    loadComponent: () => import('./features/wholesale/wholesale.component').then(m => m.WholesaleComponent),
+    title: 'Wholesale & B2B Bulk Tea Orders | EveryDay Tea'
+  },
+  {
+    path: 'franchise',
+    loadComponent: () => import('./features/franchise/franchise.component').then(m => m.FranchiseComponent),
+    title: 'Franchise Opportunities | Partner With EveryDay Tea'
+  },
   {
     path: '**',
     redirectTo: ''
