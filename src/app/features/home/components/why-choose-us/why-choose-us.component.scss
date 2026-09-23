@@ -1,0 +1,92 @@
+@use '../../../../../styles/variables' as *;
+@use '../../../../../styles/mixins' as *;
+
+.why-choose-us-section {
+  background-color: $accent-beige-light;
+  position: relative;
+
+  .container {
+    @include container;
+  }
+
+  .benefits-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.75rem;
+
+    @include desktop {
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    @include tablet {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include mobile {
+      grid-template-columns: 1fr;
+      gap: 1.25rem;
+    }
+  }
+
+  .benefit-card {
+    background: $neutral-white;
+    border-radius: $radius-lg;
+    padding: 2.25rem 1.5rem;
+    border: 1px solid rgba(74, 107, 77, 0.12);
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    position: relative;
+    @include hover-lift;
+
+    &:hover {
+      border-color: $primary-green;
+
+      .icon-box {
+        background: $primary-green;
+        color: $neutral-white;
+        transform: scale(1.05);
+      }
+    }
+
+    .icon-box {
+      width: 56px;
+      height: 56px;
+      border-radius: $radius-md;
+      background: $primary-green-subtle;
+      color: $primary-green;
+      @include flex-center;
+      margin-bottom: 1.5rem;
+      transition: all $transition-smooth;
+
+      .benefit-svg {
+        width: 28px;
+        height: 28px;
+      }
+    }
+
+    .highlight-badge {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: $primary-green;
+      margin-bottom: 0.5rem;
+    }
+
+    .card-title {
+      font-family: $font-heading;
+      font-size: 1.25rem;
+      margin-bottom: 0.75rem;
+      color: $neutral-dark;
+      line-height: 1.3;
+    }
+
+    .card-desc {
+      font-size: 0.88rem;
+      line-height: 1.6;
+      color: $neutral-muted;
+    }
+  }
+}

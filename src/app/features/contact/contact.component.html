@@ -1,0 +1,115 @@
+<div class="contact-page">
+  <!-- Page Banner -->
+  <section class="contact-banner">
+    <div class="container">
+      <span class="eyebrow-tag">We are here for you</span>
+      <h1 class="page-title">Get In Touch With EveryDay Tea</h1>
+      <p class="banner-desc">
+        Have questions about our tea blends, order status, bulk wholesale, or franchise opportunities? Our customer care team is delighted to assist you.
+      </p>
+    </div>
+  </section>
+
+  <!-- Main Section: Form + Contact Info -->
+  <section class="section contact-main-section">
+    <div class="container contact-grid">
+      <!-- Contact Form -->
+      <div class="form-card">
+        <h2 class="form-title">Send Us A Message</h2>
+        <p class="form-sub">Fill out the form below and we will get back to you within 24 hours.</p>
+
+        <form (submit)="onSubmit($event)" class="contact-form">
+          <div class="form-row">
+            <div class="form-group">
+              <label for="fullName">Full Name *</label>
+              <input type="text" id="fullName" [(ngModel)]="formData.name" name="name" required placeholder="e.g. Rajesh Kumar" class="form-input" />
+            </div>
+
+            <div class="form-group">
+              <label for="emailAddr">Email Address *</label>
+              <input type="email" id="emailAddr" [(ngModel)]="formData.email" name="email" required placeholder="e.g. rajesh@example.com" class="form-input" />
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label for="phoneNum">Phone Number (Optional)</label>
+              <input type="tel" id="phoneNum" [(ngModel)]="formData.phone" name="phone" placeholder="+91 98765 43210" class="form-input" />
+            </div>
+
+            <div class="form-group">
+              <label for="topicSelect">Inquiry Topic</label>
+              <select id="topicSelect" [(ngModel)]="formData.topic" name="topic" class="form-select">
+                <option value="general">General Inquiry</option>
+                <option value="order">Order & Shipping Status</option>
+                <option value="wholesale">Bulk & Wholesale Order (B2B)</option>
+                <option value="franchise">Franchise & Retail Partnership</option>
+                <option value="feedback">Product Feedback</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="msgText">Your Message *</label>
+            <textarea id="msgText" [(ngModel)]="formData.message" name="message" rows="5" required placeholder="How can we help make your morning chai better?" class="form-textarea"></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary btn-block submit-btn">
+            Send Message ✉️
+          </button>
+        </form>
+      </div>
+
+      <!-- Contact Info Sidebar -->
+      <div class="info-sidebar">
+        <div class="info-card">
+          <h3 class="info-card-title">Customer Care</h3>
+          <p class="info-text">Mon – Sat, 9:00 AM – 7:00 PM IST</p>
+
+          <div class="info-item">
+            <span class="info-icon">📞</span>
+            <div class="info-details">
+              <span class="label">Toll-Free Helpline</span>
+              <a href="tel:18001234567" class="val">1800 123 4567</a>
+            </div>
+          </div>
+
+          <div class="info-item">
+            <span class="info-icon">✉️</span>
+            <div class="info-details">
+              <span class="label">Email Support</span>
+              <a href="mailto:care@everydaytea.in" class="val">care&#64;everydaytea.in</a>
+            </div>
+          </div>
+
+        </div>
+
+        <div class="info-card">
+          <h3 class="info-card-title">Headquarters & Estates</h3>
+
+          <div class="info-item">
+            <span class="info-icon">📍</span>
+            <div class="info-details">
+              <span class="label">Assam Head Estate</span>
+              <span class="val text-val">EveryDay Tea Estate Rd, Upper Dibrugarh, Assam 786001</span>
+            </div>
+          </div>
+
+          <div class="info-item">
+            <span class="info-icon">🏢</span>
+            <div class="info-details">
+              <span class="label">Corporate Office</span>
+              <span class="val text-val">Plot 45, Commercial Hub, Connaught Place, New Delhi 110001</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="quick-faq-box">
+          <h4>Looking for instant answers?</h4>
+          <p>Check our detailed FAQ page for shipping times, refund policies, and tea storage tips.</p>
+          <a routerLink="/faq" class="btn btn-ghost-dark btn-sm">Visit FAQ Page</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

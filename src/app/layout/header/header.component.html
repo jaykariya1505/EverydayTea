@@ -1,0 +1,72 @@
+<header class="header" [class.scrolled]="isScrolled()">
+  <div class="header-container">
+    <!-- Brand Logo -->
+    <a routerLink="/" class="brand-link" (click)="closeMobileMenu()">
+      <app-wordmark-logo [variant]="isScrolled() ? 'default' : 'light'" size="medium"></app-wordmark-logo>
+    </a>
+
+    <!-- Desktop Nav Links -->
+    <nav class="desktop-nav" aria-label="Main Navigation">
+      <ul class="nav-list">
+        <li *ngFor="let item of navItems" class="nav-item">
+          <a [routerLink]="item.path" routerLinkActive="active" [routerLinkActiveOptions]="{exact: item.path === '/'}" class="nav-link">
+            {{ item.label }}
+          </a>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- Header Actions -->
+    <div class="header-actions">
+      <!-- Cart Icon Button with Live Count Badge -->
+      <button class="cart-btn-icon" (click)="openCart()" aria-label="View Shopping Cart">
+        <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/>
+          <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+        </svg>
+        <span *ngIf="cartService.totalItems() > 0" class="cart-badge-count">
+          {{ cartService.totalItems() }}
+        </span>
+      </button>
+
+      <button class="btn btn-primary shop-cta" (click)="openCart()">
+        <span>Cart (₹{{ cartService.subtotal() }})</span>
+      </button>
+
+      <!-- Hamburger Toggle for Mobile -->
+      <button class="hamburger-btn" (click)="toggleMobileMenu()" [attr.aria-expanded]="isMobileMenuOpen()" aria-label="Toggle Navigation Menu">
+        <span class="hamburger-box">
+          <span class="hamburger-inner" [class.is-active]="isMobileMenuOpen()"></span>
+        </span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Drawer Backdrop & Menu -->
+  <div class="mobile-drawer" [class.open]="isMobileMenuOpen()">
+    <div class="drawer-overlay" (click)="closeMobileMenu()"></div>
+    <div class="drawer-content">
+      <div class="drawer-header">
+        <app-wordmark-logo variant="default" size="medium"></app-wordmark-logo>
+        <button class="close-btn" (click)="closeMobileMenu()" aria-label="Close menu">&times;</button>
+      </div>
+
+      <nav class="mobile-nav">
+        <ul class="mobile-nav-list">
+          <li *ngFor="let item of navItems">
+            <a [routerLink]="item.path" routerLinkActive="active" (click)="closeMobileMenu()" class="mobile-nav-link">
+              {{ item.label }}
+            </a>
+          </li>
+        </ul>
+      </nav>
+
+      <div class="drawer-footer">
+        <p class="drawer-tagline">Har Subah, Har Chai — Organic Assam Tea</p>
+        <button class="btn btn-primary btn-block" (click)="openCart()">
+          View Cart ({{ cartService.totalItems() }})
+        </button>
+      </div>
+    </div>
+  </div>
+</header>

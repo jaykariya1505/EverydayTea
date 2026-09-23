@@ -1,0 +1,208 @@
+<div class="wholesale-page">
+  <!-- Page Banner -->
+  <section class="wholesale-banner">
+    <div class="container">
+      <span class="eyebrow-tag">B2B & Bulk Supply</span>
+      <h1 class="page-title">Direct Assam Factory Pricing For Hotels, Offices & Retailers</h1>
+      <p class="banner-desc">
+        Source 100% organic Assam tea in 10kg, 25kg, and 50kg bulk sacks straight from origin. Guaranteed aroma consistency, sample testing, and custom B2B pricing.
+      </p>
+    </div>
+  </section>
+
+  <!-- Bulk Calculator Section -->
+  <section class="section calc-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="eyebrow">Instant Estimation</span>
+        <h2 class="section-title">Interactive Bulk Price Calculator</h2>
+        <p class="section-subtitle">Select your required volume and blend type to see volume tier discounts.</p>
+      </div>
+
+      <div class="calc-card">
+        <div class="calc-inputs">
+          <div class="input-field">
+            <label>Select Blend Type:</label>
+            <div class="blend-selector">
+              <button 
+                class="blend-btn" 
+                [class.active]="selectedBlend() === 'original'"
+                (click)="selectedBlend.set('original')"
+              >
+                EveryDay Original CTC
+              </button>
+              <button 
+                class="blend-btn gold-blend" 
+                [class.active]="selectedBlend() === 'gold'"
+                (click)="selectedBlend.set('gold')"
+              >
+                EveryDay Gold Reserve ✨
+              </button>
+              <button 
+                class="blend-btn" 
+                [class.active]="selectedBlend() === 'masala'"
+                (click)="selectedBlend.set('masala')"
+              >
+                EveryDay Masala Chai
+              </button>
+            </div>
+          </div>
+
+          <div class="input-field">
+            <div class="slider-header">
+              <label>Select Quantity (Kg):</label>
+              <span class="weight-display">{{ bulkWeightKg() }} Kg</span>
+            </div>
+            <input 
+              type="range" 
+              min="10" 
+              max="200" 
+              step="5" 
+              [ngModel]="bulkWeightKg()" 
+              (ngModelChange)="bulkWeightKg.set($event)"
+              class="weight-slider" 
+            />
+            <div class="slider-tiers">
+              <span>10kg (Standard)</span>
+              <span>25kg (10% OFF)</span>
+              <span>50kg (15% OFF)</span>
+              <span>100kg+ (20% OFF)</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="calc-result">
+          <div class="result-box">
+            <span class="result-label">Estimated Rate</span>
+            <div class="rate-val">
+              <span class="amount">₹{{ bulkQuote().pricePerKg }}</span>
+              <span class="unit">/ kg</span>
+            </div>
+            <span *ngIf="bulkQuote().discountPercent > 0" class="savings-tag">
+              🎉 Saving {{ bulkQuote().discountPercent }}% with volume tier!
+            </span>
+          </div>
+
+          <div class="total-row">
+            <span>Estimated Order Total:</span>
+            <span class="total-val">₹{{ bulkQuote().total }}</span>
+          </div>
+
+          <p class="result-note">* Includes GST & origin packaging. Final commercial invoice generated upon sample approval.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Main Section: B2B Benefits & Inquiry Form -->
+  <section class="section b2b-main-section">
+    <div class="container b2b-grid">
+      <!-- B2B Benefits Column -->
+      <div class="benefits-col">
+        <h2 class="col-title">Why Partner With EveryDay Tea for B2B?</h2>
+
+        <div class="benefit-item">
+          <div class="benefit-icon">🏭</div>
+          <div class="benefit-info">
+            <h3>Direct Estate Sourcing</h3>
+            <p>Shipped directly from our Dibrugarh factory in Assam, removing middlemen and guaranteeing lowest bulk rates.</p>
+          </div>
+        </div>
+
+        <div class="benefit-item">
+          <div class="benefit-icon">🧪</div>
+          <div class="benefit-info">
+            <h3>Free Sample Box</h3>
+            <p>We send complimentary 250g sample packs of EveryDay Original and EveryDay Gold for your tasting panel before ordering.</p>
+          </div>
+        </div>
+
+        <div class="benefit-item">
+          <div class="benefit-icon">📦</div>
+          <div class="benefit-info">
+            <h3>Custom White Labeling</h3>
+            <p>Available private label packaging in 100g, 250g, and 500g pouches for retail chains and restaurant groups.</p>
+          </div>
+        </div>
+
+        <div class="benefit-item">
+          <div class="benefit-icon">🚛</div>
+          <div class="benefit-info">
+            <h3>Reliable Logistics</h3>
+            <p>Pan-India freight network guaranteeing delivery within 3-5 days with batch lab test reports.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- B2B Inquiry Form Column -->
+      <div class="form-col">
+        <div class="form-card">
+          <h2 class="form-title">Request B2B Wholesale Quote</h2>
+          <p class="form-sub">Receive a formal quotation & free sample kit sent to your business address.</p>
+
+          <form (submit)="onSubmitInquiry($event)" class="b2b-form">
+            <div class="form-group">
+              <label for="bizName">Company / Business Name *</label>
+              <input type="text" id="bizName" [(ngModel)]="formData.businessName" name="businessName" required placeholder="e.g. Grand Assam Hotel / Chai Point Retail" class="form-input" />
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="contactName">Contact Person *</label>
+                <input type="text" id="contactName" [(ngModel)]="formData.contactName" name="contactName" required placeholder="e.g. Suresh Sharma" class="form-input" />
+              </div>
+
+              <div class="form-group">
+                <label for="bizEmail">Business Email *</label>
+                <input type="email" id="bizEmail" [(ngModel)]="formData.email" name="email" required placeholder="suresh@company.com" class="form-input" />
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="bizPhone">Phone Number *</label>
+                <input type="tel" id="bizPhone" [(ngModel)]="formData.phone" name="phone" required placeholder="+91 98765 43210" class="form-input" />
+              </div>
+
+              <div class="form-group">
+                <label for="gstNum">GSTIN (Optional)</label>
+                <input type="text" id="gstNum" [(ngModel)]="formData.gstin" name="gstin" placeholder="18AAAAA0000A1Z5" class="form-input" />
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="bizType">Business Category</label>
+                <select id="bizType" [(ngModel)]="formData.businessType" name="businessType" class="form-select">
+                  <option value="hotel">Hotel / Resort / Restaurant</option>
+                  <option value="office">Corporate Office / Pantry</option>
+                  <option value="distributor">Tea Wholesaler / Distributor</option>
+                  <option value="retail">Supermarket / Retail Chain</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label for="volSelect">Monthly Volume Needed</label>
+                <select id="volSelect" [(ngModel)]="formData.monthlyVolume" name="monthlyVolume" class="form-select">
+                  <option value="10-25 kg">10 – 25 kg / month</option>
+                  <option value="25-50 kg">25 – 50 kg / month</option>
+                  <option value="50-100 kg">50 – 100 kg / month</option>
+                  <option value="100kg+">100+ kg / month (Tier 1)</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="bizMsg">Specific Requirements / Blend Customization</label>
+              <textarea id="bizMsg" [(ngModel)]="formData.message" name="message" rows="4" placeholder="Tell us about your required blend strength, sample request, or packaging needs..." class="form-textarea"></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-gold btn-block">
+              Request B2B Quote & Sample Pack 📦
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

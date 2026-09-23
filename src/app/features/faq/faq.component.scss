@@ -1,0 +1,171 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.faq-page {
+  .faq-banner {
+    padding: 8.5rem 0 3.5rem;
+    background: linear-gradient(180deg, $neutral-dark 0%, #3D352E 100%);
+    color: $neutral-white;
+    text-align: center;
+
+    .container {
+      @include container;
+      max-width: 760px;
+    }
+
+    .eyebrow-tag {
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: $accent-beige;
+      margin-bottom: 0.75rem;
+      display: block;
+    }
+
+    .page-title {
+      font-family: $font-heading;
+      font-size: 2.75rem;
+      margin-bottom: 1rem;
+
+      @include mobile {
+        font-size: 1.85rem;
+      }
+    }
+
+    .banner-desc {
+      font-size: 1.05rem;
+      color: rgba(255, 255, 255, 0.82);
+      line-height: 1.6;
+    }
+  }
+
+  .faq-main-section {
+    background: $neutral-light;
+
+    .container {
+      @include container;
+      max-width: 860px;
+    }
+  }
+
+  .faq-categories {
+    display: flex;
+    justify-content: center;
+    gap: 0.65rem;
+    flex-wrap: wrap;
+    margin-bottom: 2.5rem;
+
+    .pill-btn {
+      padding: 0.55rem 1.2rem;
+      border-radius: $radius-full;
+      font-size: 0.88rem;
+      font-weight: 500;
+      color: $neutral-muted;
+      background: $neutral-white;
+      border: 1px solid $neutral-border;
+      transition: all $transition-smooth;
+
+      &:hover {
+        color: $neutral-dark;
+        border-color: $primary-green;
+      }
+
+      &.active {
+        background: $primary-green;
+        color: $neutral-white;
+        border-color: $primary-green;
+      }
+
+      &.gold-pill.active {
+        background: linear-gradient(135deg, $gold-primary, $gold-light);
+        color: $neutral-dark;
+        border-color: $gold-primary;
+        box-shadow: $shadow-gold;
+      }
+    }
+  }
+
+  .faq-accordion-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 3.5rem;
+  }
+
+  .accordion-card {
+    background: $neutral-white;
+    border-radius: $radius-md;
+    border: 1px solid $neutral-border;
+    overflow: hidden;
+    transition: all $transition-fast;
+
+    &.gold-faq {
+      border-left: 4px solid $gold-primary;
+    }
+
+    &.expanded {
+      border-color: $primary-green;
+      box-shadow: $shadow-sm;
+    }
+
+    .accordion-header {
+      width: 100%;
+      padding: 1.25rem 1.5rem;
+      @include flex-between;
+      text-align: left;
+      background: transparent;
+      cursor: pointer;
+
+      .question-text {
+        font-family: $font-heading;
+        font-size: 1.15rem;
+        color: $neutral-dark;
+        padding-right: 1rem;
+      }
+
+      .accordion-icon {
+        font-size: 1.5rem;
+        font-weight: 300;
+        color: $primary-green;
+        flex-shrink: 0;
+      }
+    }
+
+    .accordion-body {
+      padding: 0 1.5rem 1.25rem;
+      border-top: 1px solid rgba(0,0,0,0.04);
+      animation: fadeIn 0.25s ease forwards;
+
+      .answer-text {
+        font-size: 0.95rem;
+        color: $neutral-muted;
+        line-height: 1.65;
+        padding-top: 0.75rem;
+      }
+    }
+  }
+
+  .faq-cta-card {
+    background: $accent-beige-light;
+    border: 1px solid rgba(74, 107, 77, 0.2);
+    border-radius: $radius-lg;
+    padding: 2.5rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.75rem;
+
+    h3 {
+      font-family: $font-heading;
+      font-size: 1.5rem;
+    }
+
+    p {
+      font-size: 0.92rem;
+      color: $neutral-muted;
+      margin-bottom: 0.5rem;
+    }
+  }
+}

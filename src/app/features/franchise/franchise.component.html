@@ -1,0 +1,163 @@
+<div class="franchise-page">
+  <!-- Page Banner -->
+  <section class="franchise-banner">
+    <div class="container">
+      <span class="eyebrow-tag">Partner With Us</span>
+      <h1 class="page-title">Own An EveryDay Tea Franchise</h1>
+      <p class="banner-desc">
+        Join India’s fastest-growing organic tea brand. Partner with EveryDay Tea & EveryDay Gold to build a high-margin, sustainable retail business in your city.
+      </p>
+    </div>
+  </section>
+
+  <!-- Investment Tiers Grid -->
+  <section class="section tiers-section">
+    <div class="container">
+      <div class="section-header">
+        <span class="eyebrow">Franchise Models</span>
+        <h2 class="section-title">Flexible Partnership Tiers</h2>
+        <p class="section-subtitle">Choose the retail footprint model that best matches your investment vision and location.</p>
+      </div>
+
+      <div class="tiers-grid">
+        <!-- Tier 1 -->
+        <div class="tier-card">
+          <div class="tier-badge">Kiosk Model</div>
+          <h3 class="tier-name">EveryDay Tea Express Kiosk</h3>
+          <p class="tier-desc">Ideal for high-footfall metro stations, tech parks, shopping malls, and university hubs.</p>
+          <div class="tier-investment">
+            <span class="label">Investment Required</span>
+            <span class="amount">₹3.5 – 5 Lakhs</span>
+          </div>
+          <ul class="tier-features">
+            <li>✓ Area Required: 80 – 150 sq. ft.</li>
+            <li>✓ Fresh Chai & Packed Tea Counter</li>
+            <li>✓ ROI Horizon: 8 – 12 Months</li>
+            <li>✓ Complete POS & Kiosk Setup Support</li>
+          </ul>
+        </div>
+
+        <!-- Tier 2 -->
+        <div class="tier-card featured-tier">
+          <div class="tier-badge gold-badge">Most Popular ✨</div>
+          <h3 class="tier-name">EveryDay & Gold Retail Outlet</h3>
+          <p class="tier-desc">Full-spectrum retail experience store featuring both EveryDay Original and EveryDay Gold sub-brand lines.</p>
+          <div class="tier-investment">
+            <span class="label">Investment Required</span>
+            <span class="amount">₹8 – 12 Lakhs</span>
+          </div>
+          <ul class="tier-features">
+            <li>✨ Area Required: 250 – 500 sq. ft.</li>
+            <li>✨ Premium Tasting Bar & Product Display</li>
+            <li>✨ Exclusive Regional Territory Rights</li>
+            <li>✨ 40% Average Gross Margin</li>
+          </ul>
+        </div>
+
+        <!-- Tier 3 -->
+        <div class="tier-card">
+          <div class="tier-badge">Master Distribution</div>
+          <h3 class="tier-name">City Master Distributor</h3>
+          <p class="tier-desc">Exclusive distribution rights to supply supermarkets, Kirana networks, and hotels across an entire district.</p>
+          <div class="tier-investment">
+            <span class="label">Investment Required</span>
+            <span class="amount">₹15 – 25 Lakhs</span>
+          </div>
+          <ul class="tier-features">
+            <li>✓ Full District Supply Rights</li>
+            <li>✓ Direct Assam Factory Consignments</li>
+            <li>✓ Dedicated Sales Field Team Support</li>
+            <li>✓ High-Volume B2B Margin Tiers</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Application Form Section -->
+  <section class="section app-section">
+    <div class="container grid-2-col">
+      <!-- Left Info Column -->
+      <div class="partner-info-col">
+        <h2 class="col-title">Partner Benefits & Brand Support</h2>
+        
+        <div class="info-point">
+          <span class="point-icon">🌱</span>
+          <div class="point-text">
+            <h3>Direct Estate Supply Guarantee</h3>
+            <p>100% organic tea shipped directly from Assam to your store, ensuring fresh stock and consistent taste year-round.</p>
+          </div>
+        </div>
+
+        <div class="info-point">
+          <span class="point-icon">📢</span>
+          <div class="point-text">
+            <h3>National Marketing & Branding</h3>
+            <p>Benefit from digital campaigns, localized PR launch events, and store branding materials supplied by our corporate team.</p>
+          </div>
+        </div>
+
+        <div class="info-point">
+          <span class="point-icon">🎓</span>
+          <div class="point-text">
+            <h3>Comprehensive Training</h3>
+            <p>Staff brewing workshops, customer service protocols, inventory management software, and operational support.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right Form Column -->
+      <div class="form-card-col">
+        <div class="form-card">
+          <h2 class="form-title">Apply For Franchise</h2>
+          <p class="form-sub">Submit your details and our franchise director will get in touch within 24 hours.</p>
+
+          <form (submit)="onSubmitApplication($event)" class="franchise-form">
+            <div class="form-group">
+              <label for="fName">Full Name *</label>
+              <input type="text" id="fName" [(ngModel)]="formData.fullName" name="fullName" required placeholder="e.g. Ananya Sharma" class="form-input" />
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="fEmail">Email Address *</label>
+                <input type="email" id="fEmail" [(ngModel)]="formData.email" name="email" required placeholder="ananya@example.com" class="form-input" />
+              </div>
+
+              <div class="form-group">
+                <label for="fPhone">Phone Number *</label>
+                <input type="tel" id="fPhone" [(ngModel)]="formData.phone" name="phone" required placeholder="+91 98765 43210" class="form-input" />
+              </div>
+            </div>
+
+            <div class="form-row">
+              <div class="form-group">
+                <label for="fCity">Proposed City & State *</label>
+                <input type="text" id="fCity" [(ngModel)]="formData.cityState" name="cityState" required placeholder="e.g. Pune, Maharashtra" class="form-input" />
+              </div>
+
+              <div class="form-group">
+                <label for="fBudget">Investment Budget</label>
+                <select id="fBudget" [(ngModel)]="formData.investmentBudget" name="investmentBudget" class="form-select">
+                  <option value="3-5Lakh">₹3 – 5 Lakhs (Kiosk)</option>
+                  <option value="5-10Lakh">₹5 – 10 Lakhs (Retail)</option>
+                  <option value="10-20Lakh">₹10 – 20 Lakhs (Flagship)</option>
+                  <option value="20Lakh+">₹20+ Lakhs (Master Partner)</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label for="fExp">Prior Business / Retail Experience</label>
+              <textarea id="fExp" [(ngModel)]="formData.experience" name="experience" rows="3" placeholder="Briefly describe your current business or retail background..." class="form-textarea"></textarea>
+            </div>
+
+            <button type="submit" class="btn btn-gold btn-block">
+              Submit Franchise Application ✨
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

@@ -1,0 +1,63 @@
+// ==========================================
+// EveryDay Tea - Design System Tokens
+// ==========================================
+
+// Color Palette
+$primary-green: #4A6B4D;
+$primary-green-dark: #37533A;
+$primary-green-light: #6E8F6A;
+$primary-green-subtle: #EBF2EC;
+
+$sky-blue: #CFE3EC;
+$sky-blue-dark: #8BAEC2;
+$sky-blue-light: #F0F6FA;
+
+$accent-beige: #F3D9C4;
+$accent-beige-dark: #E2BC9B;
+$accent-beige-light: #FAF2EB;
+
+$gold-primary: #C99A3B;
+$gold-light: #F0C265;
+$gold-dark: #8E6A21;
+$gold-subtle: #FFF9ED;
+
+$neutral-dark: #2B2620;
+$neutral-muted: #5C5449;
+$neutral-border: #E8E2D9;
+$neutral-light: #FFFDF9;
+$neutral-white: #FFFFFF;
+
+// Typography
+$font-heading: 'Playfair Display', Georgia, serif;
+$font-body: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+// Spacing
+$spacing-xs: 0.25rem;  // 4px
+$spacing-sm: 0.5rem;   // 8px
+$spacing-md: 1rem;     // 16px
+$spacing-lg: 1.5rem;   // 24px
+$spacing-xl: 2.5rem;   // 40px
+$spacing-xxl: 4rem;    // 64px
+$spacing-section: 5.5rem; // 88px
+
+// Radii
+$radius-sm: 6px;
+$radius-md: 12px;
+$radius-lg: 20px;
+$radius-full: 9999px;
+
+// Transitions
+$transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+$transition-smooth: 0.35s cubic-bezier(0.25, 1, 0.5, 1);
+
+// Elevation & Shadows
+$shadow-sm: 0 2px 8px rgba(43, 38, 32, 0.06);
+$shadow-md: 0 8px 24px rgba(43, 38, 32, 0.09);
+$shadow-lg: 0 16px 40px rgba(43, 38, 32, 0.14);
+$shadow-gold: 0 8px 24px rgba(201, 154, 59, 0.25);
+
+// Breakpoints
+$breakpoint-mobile: 480px;
+$breakpoint-tablet: 768px;
+$breakpoint-desktop: 1024px;
+$breakpoint-wide: 1280px;

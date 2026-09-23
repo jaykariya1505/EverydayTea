@@ -1,0 +1,43 @@
+<section class="section instagram-section">
+  <div class="container">
+    <div class="section-header">
+      <span class="eyebrow">Social Journal</span>
+      <h2 class="section-title">Follow Our Journey — &#64;everydaytea</h2>
+      <p class="section-subtitle">
+        Join our online chai community. Tag #EveryDayChai on Instagram to be featured in our daily morning moments.
+      </p>
+    </div>
+
+
+    <!-- Instagram Tiles Grid -->
+    <div class="insta-grid">
+      <div *ngFor="let post of posts" class="insta-tile" (click)="onFollow()">
+        <img [src]="post.image" [alt]="post.caption" loading="lazy" class="tile-image" />
+        
+        <div class="tile-overlay">
+          <div class="insta-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+              <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+              <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+            </svg>
+          </div>
+          <div class="tile-caption">{{ post.caption }}</div>
+          <div class="tile-likes">❤️ {{ post.likes }}</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Follow Button CTA -->
+    <div class="follow-cta-wrapper">
+      <button class="btn btn-ghost-dark" (click)="onFollow()">
+        <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2">
+          <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+          <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+          <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+        </svg>
+        <span>Follow Us on Instagram</span>
+      </button>
+    </div>
+  </div>
+</section>

@@ -1,0 +1,268 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/mixins' as *;
+
+.franchise-page {
+  .franchise-banner {
+    padding: 8.5rem 0 3.5rem;
+    background: linear-gradient(180deg, $neutral-dark 0%, #3D352E 100%);
+    color: $neutral-white;
+    text-align: center;
+
+    .container {
+      @include container;
+      max-width: 820px;
+    }
+
+    .eyebrow-tag {
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: $gold-light;
+      margin-bottom: 0.75rem;
+      display: block;
+    }
+
+    .page-title {
+      font-family: $font-heading;
+      font-size: 2.75rem;
+      margin-bottom: 1rem;
+
+      @include mobile {
+        font-size: 1.85rem;
+      }
+    }
+
+    .banner-desc {
+      font-size: 1.05rem;
+      color: rgba(255, 255, 255, 0.82);
+      line-height: 1.6;
+    }
+  }
+
+  .tiers-section {
+    background: $accent-beige-light;
+
+    .container {
+      @include container;
+    }
+
+    .tiers-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+
+      @include tablet {
+        grid-template-columns: 1fr;
+      }
+
+      @include mobile {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+    }
+
+    .tier-card {
+      background: $neutral-white;
+      border-radius: $radius-lg;
+      padding: 2.5rem 2rem;
+      border: 1px solid $neutral-border;
+      box-shadow: $shadow-sm;
+      display: flex;
+      flex-direction: column;
+      @include hover-lift;
+
+      &.featured-tier {
+        border: 2px solid $gold-primary;
+        background: linear-gradient(180deg, #FFFFFF, $gold-subtle);
+        box-shadow: $shadow-gold;
+      }
+
+      .tier-badge {
+        display: inline-block;
+        font-size: 0.75rem;
+        font-weight: 600;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        padding: 0.3rem 0.75rem;
+        border-radius: $radius-full;
+        background: $primary-green-subtle;
+        color: $primary-green;
+        margin-bottom: 1.25rem;
+        align-self: flex-start;
+
+        &.gold-badge {
+          background: linear-gradient(135deg, $gold-primary, $gold-light);
+          color: $neutral-dark;
+        }
+      }
+
+      .tier-name {
+        font-family: $font-heading;
+        font-size: 1.5rem;
+        margin-bottom: 0.65rem;
+      }
+
+      .tier-desc {
+        font-size: 0.88rem;
+        color: $neutral-muted;
+        line-height: 1.55;
+        margin-bottom: 1.5rem;
+      }
+
+      .tier-investment {
+        background: $neutral-light;
+        padding: 1rem;
+        border-radius: $radius-md;
+        margin-bottom: 1.5rem;
+        display: flex;
+        flex-direction: column;
+
+        .label {
+          font-size: 0.75rem;
+          color: $neutral-muted;
+          text-transform: uppercase;
+        }
+
+        .amount {
+          font-family: $font-heading;
+          font-size: 1.5rem;
+          font-weight: 700;
+          color: $neutral-dark;
+        }
+      }
+
+      .tier-features {
+        list-style: none;
+        display: flex;
+        flex-direction: column;
+        gap: 0.65rem;
+        font-size: 0.88rem;
+        color: $neutral-dark;
+        margin-top: auto;
+      }
+    }
+  }
+
+  .app-section {
+    background: $neutral-light;
+
+    .container {
+      @include container;
+    }
+
+    .grid-2-col {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 3.5rem;
+
+      @include mobile {
+        grid-template-columns: 1fr;
+        gap: 2.5rem;
+      }
+    }
+
+    .partner-info-col {
+      .col-title {
+        font-family: $font-heading;
+        font-size: 2rem;
+        margin-bottom: 2rem;
+      }
+
+      .info-point {
+        display: flex;
+        gap: 1.25rem;
+        margin-bottom: 2rem;
+
+        .point-icon {
+          font-size: 2.25rem;
+          flex-shrink: 0;
+        }
+
+        .point-text {
+          h3 {
+            font-family: $font-heading;
+            font-size: 1.25rem;
+            margin-bottom: 0.35rem;
+          }
+
+          p {
+            font-size: 0.9rem;
+            color: $neutral-muted;
+            line-height: 1.6;
+          }
+        }
+      }
+    }
+
+    .form-card-col {
+      .form-card {
+        background: $neutral-white;
+        padding: 2.5rem;
+        border-radius: $radius-lg;
+        border: 1px solid $neutral-border;
+        box-shadow: $shadow-sm;
+
+        @include mobile {
+          padding: 1.5rem;
+        }
+
+        .form-title {
+          font-family: $font-heading;
+          font-size: 1.85rem;
+          margin-bottom: 0.35rem;
+        }
+
+        .form-sub {
+          font-size: 0.88rem;
+          color: $neutral-muted;
+          margin-bottom: 2rem;
+        }
+
+        .franchise-form {
+          display: flex;
+          flex-direction: column;
+          gap: 1.15rem;
+        }
+
+        .form-row {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          gap: 1.15rem;
+
+          @include mobile {
+            grid-template-columns: 1fr;
+          }
+        }
+
+        .form-group {
+          display: flex;
+          flex-direction: column;
+          gap: 0.35rem;
+
+          label {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: $neutral-dark;
+          }
+
+          .form-input, .form-select, .form-textarea {
+            padding: 0.75rem 0.95rem;
+            border-radius: $radius-md;
+            border: 1px solid $neutral-border;
+            font-family: $font-body;
+            font-size: 0.88rem;
+            color: $neutral-dark;
+            background: $neutral-light;
+
+            &:focus {
+              outline: none;
+              border-color: $gold-primary;
+              background: $neutral-white;
+            }
+          }
+        }
+      }
+    }
+  }
+}
